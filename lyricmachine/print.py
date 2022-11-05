@@ -3,6 +3,11 @@
 import os
 
 file = open("data.txt", "r")
+file2 = open("content.txt", "r")
+
+list_total = int(file2.readline())
+
+os.system(': > content.txt')
 
 title = ""
 owner = ""
@@ -12,7 +17,17 @@ tracks = []
 artists = []
 
 print()
-playlist = int(input("Enter #: "))
+
+while True:
+    try:
+        playlist = int(input("Enter #: "))
+        if 0 < playlist <= list_total:
+            break
+        else:
+            print("Invalid track. Try again.")
+    except ValueError:
+        print("Invalid input. Try again. ")
+
 list_counter = 1
 
 counter = 0
@@ -61,7 +76,18 @@ for t, a in zip(tracks, artists):
     print('{0:<5}{1:<50}{2:<30}'.format(count, t[0:50], a))
     count = count + 1
 print()
-number = int(input("Enter #: "))
+
+
+while True:
+    try:
+        number = int(input("Enter #: "))
+        if 0 < number <= len(tracks):
+            break
+        else:
+            print("Invalid track. Try again.")
+    except ValueError:
+        print("Invalid input. Try again. ")
+
 number = number - 1
 found1 = ""
 found2 = ""
@@ -71,7 +97,7 @@ for t, a in zip(tracks, artists):
         found2 = a
         break
 
-print(found2 + " - " + found1)
+print("[" + found2 + " - " + found1 + "]")
 print()
 
 os.system('./view.sh ' + '\'' + found1 + '\' \'' + found2 + '\'')

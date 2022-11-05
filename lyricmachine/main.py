@@ -22,4 +22,6 @@ for a in playlist_names:
     print(str(i) + "  " + a)
     i = i + 1
 
+
+os.system('echo ' + str(i - 1) + ' >&1 >> content.txt')
 os.system('python3 print.py')
