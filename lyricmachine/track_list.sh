@@ -1,10 +1,10 @@
 #!/bin/bash
 
 settings=$1
-url=$2
 
 if [ "$settings" == "-a" ];
 then
+	url=$2
 	./import_list.sh $url > /dev/null 2>&1
 
 	# GET PLAYLIST TITLE
@@ -27,6 +27,22 @@ then
 	echo " --" >> $(pwd)/data.txt 2>&1
 
 	: > $(pwd)/content.txt
+
+elif [ "$settings" == "-s" ];
+then
+	term="$*"
+	term=${term//-s /}
+	w3m -dump $(./search.sh 'genius lyrics '$term | grep -m 1 lyrics | sed 's|\(.*\)lyrics.*|\1|')'lyrics' | grep -A 1000 ' Lyrics' | grep -B 200 'Embed' | grep -v -x Embed | grep -v 'You might also like' | grep -v 'Get tickets' | grep -v "See $artist Live" >> lyrics.txt
+
+	var=$(cat lyrics.txt | tail -1)
+	var=${var//./}
+	var=${var//K/}
+
+	if [[ $var =~ ^-?[0-9]+$ ]]; then
+		sed -i '$ d' lyrics.txt
+	fi
+	cat lyrics.txt
+	: > lyrics.txt
 else
 	python3 main.py
 fi

@@ -54,12 +54,21 @@ for line in file:
                 if line.strip() == "--":
                     isDelim = True
                 if not isTracksDelim:
-                    tracks.append(line.strip())
+                    line = line.strip().replace("&#x27;", "'")
+                    line = line.strip().replace("&amp", "&")
+                    line = line.strip().replace("&quot;", "\"")
+                    line = line.strip().replace("&;", "&")
+
+                    tracks.append(line)
                 else:
                     if isDelim:
                         break
-                        print("DELIM")
                     else:
+                        line = line.strip().replace("&#x27;", "'")
+                        line = line.strip().replace("&amp", "&")
+                        line = line.strip().replace("&quot;", "\"")
+                        line = line.strip().replace("&;", "&")
+
                         artists.append(line.strip())
 
         counter = counter + 1
@@ -97,8 +106,9 @@ for t, a in zip(tracks, artists):
         found2 = a
         break
 
-print("[" + found2 + " - " + found1 + "]")
 print()
-
+print("[" + found2 + " - " + found1 + "]")
+print("_______________________________________________________________________")
+print()
 os.system('./view.sh ' + '\'' + found1 + '\' \'' + found2 + '\'')
 
