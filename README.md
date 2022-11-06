@@ -13,6 +13,7 @@ Add a public spotify playlist to your list of playlists for future access.
 
 ## lm -s \<search-content\>
 Search for the lyrics of any song by title and artist (Entering both title and artist grants the best results)
+![](https://github.com/stran556/lyric-machine/blob/main/output2.gif)
 
 Uploading playlists will only upload the first 100 tracks. This is because 'wget' will only retrieve the contents of the first page rendering of up to 100 tracks. Private playlists cannot be uploaded as they cannot be accessed with 'wget'. Playlists with unofficial track downloads may result in track-artist mapping discrepancies. Playlists must be from Spotify to be added properly. 
 
