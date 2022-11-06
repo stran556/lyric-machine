@@ -7,10 +7,10 @@ LyricMachine presents the lyrics to almost any song in a very convenient interfa
 ## lm
 View your uploaded playlists. Pick song lyrics from any of the tracks in the playlists displayed.
 
-## lm -a <spotify-playlist-url>
+## lm -a \<spotify-playlist-url\>
 Add a public spotify playlist to your list of playlists for future access.
 
-## lm -s <search-content>
+## lm -s \<search-content\>
 Search for the lyrics of any song by title and artist (Entering both title and artist grants the best results)
 
 ### Tools that may need installation: 
