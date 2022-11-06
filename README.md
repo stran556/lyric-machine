@@ -6,6 +6,7 @@ LyricMachine presents the lyrics to almost any song in a very convenient interfa
 
 ## lm
 View your uploaded playlists. Pick song lyrics from any of the tracks in the playlists displayed.
+![](https://github.com/stran556/lyric-machine/blob/main/output1.gif)
 
 ## lm -a \<spotify-playlist-url\>
 Add a public spotify playlist to your list of playlists for future access.
