@@ -18,9 +18,13 @@ Search for the lyrics of any song by title and artist (Entering both title and a
 Uploading playlists will only upload the first 100 tracks. This is because 'wget' will only retrieve the contents of the first page rendering of up to 100 tracks. Private playlists cannot be uploaded as they cannot be accessed with 'wget'. Playlists with unofficial track downloads may result in track-artist mapping discrepancies. Playlists must be from Spotify to be added properly. 
 
 ### Tools that may need installation: 
+
 python3- Run .py files (main.py, print.py)
+
 lynx- Retrieve a webpage by search (search.sh)
+
 wget- Retrieve HTML content for URL (import_list.sh)
+
 w3m- Retrieve webpage content close to original form (track_list.sh, view.sh)
 
 
