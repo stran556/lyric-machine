@@ -182,7 +182,7 @@ Juice WRLD
 Post Malone
 Future
 Russ
- --
+--
 //no_signal
 s.tranding
 about 7 hr 30 min
@@ -387,7 +387,7 @@ CRAY
 Teminite
 Memtrix
 So Below
- --
+--
 //dnr
 s.tranding
 about 8 hr 30 min
@@ -592,7 +592,7 @@ Virtual Self
 Porter Robinson
 Eastghost
 Through &amp; Through
- --
+--
 //ground_control
 s.tranding
 3 hr 5 min
@@ -699,7 +699,7 @@ JNATHYN
 Kulakostas
 Laura Platt
 Open Ocean
- --
+--
 //fractures
 s.tranding
 3 hr 40 min
@@ -824,10 +824,10 @@ Kailee Morgue
 Alex Mattson
 Saavan
 Delta Heavy
- --
+--
 //stealing_fire
 s.tranding
-1 hr 48 min
+2 hr 12 min
 WICKED
 Pain Killer
 HOUNDIN PT. II
@@ -849,7 +849,6 @@ Seize the Power
 Tuning Out
 Smile
 Pink + White
-Faded
 Hellogoodbye - PVRIS Remix
 Losing My Mind
 Fallout
@@ -860,6 +859,12 @@ Pins &amp; Needles - Xan Griffin Remix
 Rearview
 Loud Magic
 Wild Side
+Written Maze
+Wicked Game
+Outside
+Tonight You Are Mine
+Animus Vox
+Heart Afire
 
 MILKBLOOD
 Grabbitz
@@ -882,7 +887,6 @@ YONAKA
 8 Graves
 Wolf Alice
 Frank Ocean
-Crypto
 HOKO
 MISSIO
 HVDES
@@ -893,4 +897,10 @@ Grabbitz
 Run River North
 Foreign Air
 Not Your Dope
+DROELOE
+Theory of a Deadman
+Staind
+The Technicolors
+The Glitch Mob
+STRIX
  --

@@ -43,6 +43,9 @@ then
 	fi
 	cat lyrics.txt
 	: > lyrics.txt
+elif [ "$settings" == "-r" ];
+then
+	python3 remove.py
 else
 	python3 main.py
 fi
