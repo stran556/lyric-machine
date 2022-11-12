@@ -12,6 +12,9 @@ View your uploaded playlists. Pick song lyrics from any of the tracks in the pla
 ## lm -a \<spotify-playlist-url\>
 Add a public spotify playlist to your list of playlists for future access.
 
+## lm -r
+Remove a playlist from your list.
+
 ## lm -s \<search-content\>
 Search for the lyrics of any song by title and artist (Entering both title and artist grants the best results)
 
