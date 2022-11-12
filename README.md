@@ -14,6 +14,7 @@ Add a public spotify playlist to your list of playlists for future access.
 
 ## lm -r
 Remove a playlist from your list.
+![](https://github.com/stran556/lyric-machine/blob/main/remove.gif)
 
 ## lm -s \<search-content\>
 Search for the lyrics of any song by title and artist (Entering both title and artist grants the best results)
