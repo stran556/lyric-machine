@@ -2,7 +2,17 @@
 
 settings=$1
 
-if [ "$settings" == "-a" ];
+if [ "$settings" == "--help" ];
+then
+	echo ""
+	echo "Help for LyricMachine"
+	echo ""
+	echo "  -a  <spotify-URL>   |  add playlist"
+	echo "  -s  <search-input>  |  manual track search"
+	echo "  -r  <null>          |  remove playlist"
+
+
+elif [ "$settings" == "-a" ];
 then
 	url=$2
 	./import_list.sh $url > /dev/null 2>&1
@@ -43,9 +53,15 @@ then
 	fi
 	cat lyrics.txt
 	: > lyrics.txt
+
 elif [ "$settings" == "-r" ];
 then
 	python3 remove.py
-else
+
+elif [[ -z ${1+x} ]];
+then
 	python3 main.py
+else
+	echo "Command not found. See --help for more information."
 fi
+

@@ -46,6 +46,7 @@ for val in file_content:
     count = count + 1
 os.system(': > data.txt')
 os.system('cat content.txt >> data.txt')
+os.system(': > content.txt')
 
 
 
