@@ -56,9 +56,11 @@ then
 
 elif [ "$settings" == "-r" ];
 then
-	
+	java Remove
+
 elif [[ -z ${1+x} ]];
 then
+	echo $USER\'s home
 	java Main
 else
 	echo "Command not found. See --help for more information."

@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -115,8 +114,6 @@ public class Main {
         System.out.print(track.size() + " songs" + " · ");
         System.out.print(ml.get(num - 1).getDuration() + "\n");
 
-        
-
         System.out.println("#    -TITLE-                                           -ARTIST-");
         for(int i = 0; i < track.size(); i++){
             System.out.printf("%-5d%-50s%-30s\n", (i + 1), track.get(i), artist.get(i));
@@ -163,6 +160,7 @@ public class Main {
         
         ArrayList<Playlist> mainList = getPlaylists();
 
+        Scanner sc = new Scanner(System.in);
         printMainScreen(mainList);
     }
 }
