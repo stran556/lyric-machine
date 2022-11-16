@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static ArrayList<Playlist> readFile(){
+    public static ArrayList<Playlist> getPlaylists(){
         File data = new File("data.txt");
 
         ArrayList<Playlist> playlistList = new ArrayList<>();
@@ -73,13 +73,17 @@ public class Main {
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         return playlistList; 
     }
+
+    public static void printMainScreen(ArrayList<Playlist> ml){
+        System.out.println(ml.size());
+    }
+
     public static void main(String[] args) {
         
-        ArrayList<Playlist> mainList = readFile();
+        ArrayList<Playlist> mainList = getPlaylists();
 
-        System.out.println(mainList.get(1).getTitle());
+        printMainScreen(mainList);
     }
 }
