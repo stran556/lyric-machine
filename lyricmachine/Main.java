@@ -77,7 +77,17 @@ public class Main {
     }
 
     public static void printMainScreen(ArrayList<Playlist> ml){
-        System.out.println(ml.size());
+        System.out.println("#  -PLAYLIST-");
+        for(int i = 0; i < ml.size(); i++){
+            System.out.println((i + 1) + "  " + ml.get(i).getTitle());
+        }
+        System.out.println("-  [EXIT]");
+
+
+    }
+
+    public static void printPlaylistScreen(ArrayList<Playlist> ml){
+
     }
 
     public static void main(String[] args) {
