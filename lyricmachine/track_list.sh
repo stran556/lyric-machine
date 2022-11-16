@@ -30,11 +30,11 @@ then
 	# GET TRACKS
 	cat $(pwd)/content.txt | grep -o -P 'track .{0,100}' | grep -v '</a>' | sed -e 's/.*track \(.*\)\" .*/\1/' >> $(pwd)/data.txt 2>&1
 
-	echo '' >> $(pwd)/data.txt 2>&1
+	echo '=+-+=' >> $(pwd)/data.txt 2>&1
 
 	# GET ARTISTS
 	cat $(pwd)/content.txt | grep -o -P 'artist.{0,200}' | cut -c 31- | rev | cut -c 125- | rev | grep '<' | sed -e 's/.*'\>'\(.*\)'\<'\/a'\>'.*/\1/' >> $(pwd)/data.txt 2>&1
-	echo " --" >> $(pwd)/data.txt 2>&1
+	echo "=-+-=" >> $(pwd)/data.txt 2>&1
 
 	: > $(pwd)/content.txt
 
@@ -56,11 +56,10 @@ then
 
 elif [ "$settings" == "-r" ];
 then
-	python3 remove.py
-
+	
 elif [[ -z ${1+x} ]];
 then
-	python3 main.py
+	java Main
 else
 	echo "Command not found. See --help for more information."
 fi
