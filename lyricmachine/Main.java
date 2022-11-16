@@ -1,7 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
 
@@ -77,15 +80,22 @@ public class Main {
     }
 
     public static void printMainScreen(ArrayList<Playlist> ml){
+        System.out.println("_______________________________________________________________________\n");
         System.out.println("#  -PLAYLIST-");
         for(int i = 0; i < ml.size(); i++){
             System.out.println((i + 1) + "  " + ml.get(i).getTitle());
         }
         System.out.println("0  [EXIT]");
         System.out.print("\nEnter #: ");
+
         Scanner s = new Scanner(System.in);
         int input = s.nextInt();
-        
+
+        while(input < 0 || input > ml.size()){
+            System.out.print("Invalid option, try again: ");
+            input = s.nextInt();
+        }
+
         if(input != 0){
             printPlaylistScreen(ml, input);
         }
@@ -113,11 +123,35 @@ public class Main {
         }
         System.out.println("0    [BACK]");
         System.out.print("\nEnter #: ");
+
         Scanner s = new Scanner(System.in);
         int input = s.nextInt();
+        
+        while(input < 0 || input > track.size()){
+            System.out.print("Invalid option, try again: ");
+            input = s.nextInt();
+        }
 
         if(input != 0){
-            //get lyrics!!!
+            System.out.println("\n[" + track.get(input - 1) + " - " + artist.get(input - 1) + "]");
+            System.out.println("\n_______________________________________________________________________\n");
+
+            ProcessBuilder pb = new ProcessBuilder();
+
+            pb.command("./view.sh", track.get(input - 1),  artist.get(input - 1));
+            try{
+                Process process = pb.start();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+
+                int exitCode = process.waitFor();
+
+            } catch(Exception e){
+                System.out.println("Error.");
+            }
         }
         else{
             printMainScreen(ml);
