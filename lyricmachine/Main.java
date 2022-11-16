@@ -81,12 +81,47 @@ public class Main {
         for(int i = 0; i < ml.size(); i++){
             System.out.println((i + 1) + "  " + ml.get(i).getTitle());
         }
-        System.out.println("-  [EXIT]");
+        System.out.println("0  [EXIT]");
+        System.out.print("\nEnter #: ");
+        Scanner s = new Scanner(System.in);
+        int input = s.nextInt();
+        
+        if(input != 0){
+            printPlaylistScreen(ml, input);
+        }
+        else{
+            System.exit(0);
+        }
 
 
     }
 
-    public static void printPlaylistScreen(ArrayList<Playlist> ml){
+    public static void printPlaylistScreen(ArrayList<Playlist> ml, int num){
+        ArrayList<String> track = ml.get(num - 1).getTrackList();
+        ArrayList<String> artist = ml.get(num - 1).getArtistList();
+        System.out.println("\n_______________________________________________________________________");
+        System.out.println("\n\"" + ml.get(num - 1).getTitle() + "\"\n");
+        System.out.print(ml.get(num - 1).getOwner() + " · ");
+        System.out.print(track.size() + " songs" + " · ");
+        System.out.print(ml.get(num - 1).getDuration() + "\n");
+
+        
+
+        System.out.println("#    -TITLE-                                           -ARTIST-");
+        for(int i = 0; i < track.size(); i++){
+            System.out.printf("%-5d%-50s%-30s\n", (i + 1), track.get(i), artist.get(i));
+        }
+        System.out.println("0    [BACK]");
+        System.out.print("\nEnter #: ");
+        Scanner s = new Scanner(System.in);
+        int input = s.nextInt();
+
+        if(input != 0){
+            //get lyrics!!!
+        }
+        else{
+            printMainScreen(ml);
+        }
 
     }
 
