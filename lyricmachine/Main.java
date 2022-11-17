@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    public static ArrayList<Playlist> getPlaylists(){
+    public static ArrayList<Playlist> getPlaylists() {
         File data = new File("data.txt");
 
         ArrayList<Playlist> playlistList = new ArrayList<>();
@@ -78,13 +78,26 @@ public class Main {
         return playlistList; 
     }
 
-    public static void printMainScreen(ArrayList<Playlist> ml){
-        System.out.println("_______________________________________________________________________\n");
+    public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException{
+        System.out.println("\n[Main Menu]");
+        Thread.sleep(50);
+
+        for(int i = 0; i < 70; i++){
+            System.out.print("_");
+            Thread.sleep(10);
+        }
+        System.out.println("\n");
         System.out.println("#  -PLAYLIST-");
+        Thread.sleep(50);
         for(int i = 0; i < ml.size(); i++){
+            Thread.sleep(50);
             System.out.println((i + 1) + "  " + ml.get(i).getTitle());
         }
-        System.out.println("0  [EXIT]");
+
+        Thread.sleep(50);
+        System.out.println("\n0  [EXIT]");
+
+        Thread.sleep(50);
         System.out.print("\nEnter #: ");
 
         Scanner s = new Scanner(System.in);
@@ -96,29 +109,42 @@ public class Main {
         }
 
         if(input != 0){
+            System.out.println("\n\"" + ml.get(input - 1).getTitle() + "\"");
             printPlaylistScreen(ml, input);
         }
         else{
+            System.out.println();
+            String end = "Program terminated.";
+            for(int i = 0; i < end.length(); i++){
+                System.out.print(end.charAt(i));
+                Thread.sleep(20);
+            }
             System.exit(0);
         }
-
-
     }
 
-    public static void printPlaylistScreen(ArrayList<Playlist> ml, int num){
+    public static void printPlaylistScreen(ArrayList<Playlist> ml, int num) throws InterruptedException{
         ArrayList<String> track = ml.get(num - 1).getTrackList();
         ArrayList<String> artist = ml.get(num - 1).getArtistList();
-        System.out.println("\n_______________________________________________________________________");
-        System.out.println("\n\"" + ml.get(num - 1).getTitle() + "\"\n");
+        for(int i = 0; i < 70; i++){
+            System.out.print("_");
+            Thread.sleep(10);
+        }
+        System.out.println("\n");
         System.out.print(ml.get(num - 1).getOwner() + " · ");
         System.out.print(track.size() + " songs" + " · ");
         System.out.print(ml.get(num - 1).getDuration() + "\n");
 
-        System.out.println("#    -TITLE-                                           -ARTIST-");
+        System.out.println("#   -TITLE-                                           -ARTIST-");
         for(int i = 0; i < track.size(); i++){
-            System.out.printf("%-5d%-50s%-30s\n", (i + 1), track.get(i), artist.get(i));
+            Thread.sleep(20);
+            System.out.printf("%-4d%-50s%-30s\n", (i + 1), track.get(i), artist.get(i));
         }
-        System.out.println("0    [BACK]");
+
+        Thread.sleep(20);
+        System.out.println("\n0   [BACK]");
+
+        Thread.sleep(20);
         System.out.print("\nEnter #: ");
 
         Scanner s = new Scanner(System.in);
@@ -131,8 +157,11 @@ public class Main {
 
         if(input != 0){
             System.out.println("\n[" + track.get(input - 1) + " - " + artist.get(input - 1) + "]");
-            System.out.println("\n_______________________________________________________________________\n");
-
+            for(int i = 0; i < 70; i++){
+                System.out.print("_");
+                Thread.sleep(10);
+            }
+            System.out.println("\n");
             ProcessBuilder pb = new ProcessBuilder();
 
             pb.command("./view.sh", track.get(input - 1),  artist.get(input - 1));
@@ -156,7 +185,7 @@ public class Main {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         
         ArrayList<Playlist> mainList = getPlaylists();
 
