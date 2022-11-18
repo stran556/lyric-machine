@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.IOException;
+import java.io.FileWriter;
 
 public class Main {
 
@@ -109,7 +111,6 @@ public class Main {
         }
 
         if(input != 0){
-            System.out.println("\n\"" + ml.get(input - 1).getTitle() + "\"");
             printPlaylistScreen(ml, input);
         }
         else{
@@ -124,6 +125,8 @@ public class Main {
     }
 
     public static void printPlaylistScreen(ArrayList<Playlist> ml, int num) throws InterruptedException{
+        Main.linuxCommand("clear");
+        System.out.println("\n\"" + ml.get(num - 1).getTitle() + "\"");
         ArrayList<String> track = ml.get(num - 1).getTrackList();
         ArrayList<String> artist = ml.get(num - 1).getArtistList();
         for(int i = 0; i < 70; i++){
@@ -156,6 +159,7 @@ public class Main {
         }
 
         if(input != 0){
+            linuxCommand("clear");
             System.out.println("\n[" + track.get(input - 1) + " - " + artist.get(input - 1) + "]");
             for(int i = 0; i < 70; i++){
                 System.out.print("_");
@@ -175,14 +179,55 @@ public class Main {
 
                 int exitCode = process.waitFor();
 
-            } catch(Exception e){
-                System.out.println("Error.");
-            }
+            } catch(Exception e){}
         }
         else{
+            linuxCommand("clear");
             printMainScreen(ml);
         }
 
+    }
+
+    public static void updateList(ArrayList<Playlist> ml) throws InterruptedException{
+        
+        File data = new File("data.txt");
+        
+        try {
+            FileWriter writer = new FileWriter(data);
+            for(int i = 0; i < ml.size(); i++){
+                writer.write(ml.get(i).getTitle() + "\n");
+                writer.write(ml.get(i).getOwner() + "\n");
+                writer.write(ml.get(i).getDuration() + "\n");
+
+                for(int x = 0; x < ml.get(i).getTrackList().size(); x++){
+                    writer.write(ml.get(i).getTrackList().get(x) + "\n");
+                }
+                writer.write("=+-+=\n"); //Track delim
+
+                for(int y = 0; y < ml.get(i).getArtistList().size(); y++){
+                    writer.write(ml.get(i).getArtistList().get(y) + "\n");
+                }
+                writer.write("=-+-=\n"); //Artist delim
+            }
+            
+            writer.close();
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+          
+    }
+    public static void linuxCommand(String cmd){
+        ProcessBuilder pb = new ProcessBuilder();
+            pb.command(cmd);
+            try{
+                Process process = pb.start();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+
+            } catch(IOException e){}
     }
 
     public static void main(String[] args) throws InterruptedException{
@@ -190,6 +235,8 @@ public class Main {
         ArrayList<Playlist> mainList = getPlaylists();
 
         Scanner sc = new Scanner(System.in);
+
+        linuxCommand("clear");
         printMainScreen(mainList);
     }
 }

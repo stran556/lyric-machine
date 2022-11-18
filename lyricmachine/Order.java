@@ -9,8 +9,8 @@ import java.io.FileWriter;
 
 public class Order{
 
-    public static ArrayList<Playlist> orderList(ArrayList<Playlist> ml, int input){
-
+    public static void orderList(ArrayList<Playlist> ml, int input) throws InterruptedException{
+        Main.linuxCommand("clear");
         ArrayList<String> tempList = new ArrayList<String>();
         System.out.println("\n#    -POSITION-");
         int counter = 1;
@@ -52,6 +52,8 @@ public class Order{
             System.out.println("\nNo changes made.");
         }
         else if(input2 != 0){
+            Main.linuxCommand("clear");
+
             Playlist playlist = ml.get(input - 1);
             ml.remove(input - 1);
 
@@ -69,17 +71,24 @@ public class Order{
             if(input2 == (newList.size() + 1)){
                 newList.add(playlist);
             }
+            System.out.println("Menu updated.\n");
             for(int i = 0; i < newList.size(); i++){
-                System.out.println(newList.get(i).getTitle());
+                System.out.print(newList.get(i).getTitle());
+                if(i == input2 - 1){
+                    System.out.println(" <<");
+                }
+                else{
+                    System.out.println();
+                }
             }
+
+            Main.updateList(newList);
 
         }
         else{
             System.exit(0);
         }
 
-
-        return ml;
     }
 
     public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException{
@@ -94,7 +103,7 @@ public class Order{
         System.out.println("\n0  [CANCEL]");
         
         Thread.sleep(20);
-        System.out.print("\nEnter #: ");
+        System.out.print("\nEnter # (move): ");
 
         Scanner s = new Scanner(System.in);
         int input = s.nextInt();
@@ -117,6 +126,7 @@ public class Order{
     public static void main(String[] args) throws InterruptedException{
         ArrayList<Playlist> mainList = Main.getPlaylists();
 
+        Main.linuxCommand("clear");
         printMainScreen(mainList);
 
 

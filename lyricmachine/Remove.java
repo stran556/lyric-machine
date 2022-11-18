@@ -9,34 +9,7 @@ import java.io.FileWriter;
 
 public class Remove {
 
-    public static void updateList(ArrayList<Playlist> ml) throws InterruptedException{
-        
-        File data = new File("data.txt");
-        
-        try {
-            FileWriter writer = new FileWriter(data);
-            for(int i = 0; i < ml.size(); i++){
-                writer.write(ml.get(i).getTitle() + "\n");
-                writer.write(ml.get(i).getOwner() + "\n");
-                writer.write(ml.get(i).getDuration() + "\n");
 
-                for(int x = 0; x < ml.get(i).getTrackList().size(); x++){
-                    writer.write(ml.get(i).getTrackList().get(x) + "\n");
-                }
-                writer.write("=+-+=\n"); //Track delim
-
-                for(int y = 0; y < ml.get(i).getArtistList().size(); y++){
-                    writer.write(ml.get(i).getArtistList().get(y) + "\n");
-                }
-                writer.write("=-+-=\n"); //Artist delim
-            }
-            
-            writer.close();
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-          
-    }
 
     public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException{
         Main.linuxCommand("clear");
@@ -62,7 +35,7 @@ public class Remove {
 
         if(input != 0){
             ml.remove(input - 1);
-            updateList(ml);
+            Main.updateList(ml);
 
         }
         else{
