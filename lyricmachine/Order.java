@@ -1,17 +1,14 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.FileWriter;
 
 public class Order{
 
     public static void orderList(ArrayList<Playlist> ml, int input) throws InterruptedException{
         Main.linuxCommand("clear");
         ArrayList<String> tempList = new ArrayList<String>();
+
+        System.out.println("[move playlist]");
+        Thread.sleep(50);
         System.out.println("\n#    -POSITION-");
         int counter = 1;
         for(int i = 0; i < ml.size(); i++){
@@ -36,8 +33,12 @@ public class Order{
         }
         
         for(int x = 0; x < tempList.size(); x++){
+            Thread.sleep(50);
             System.out.println(tempList.get(x));
         }
+
+        Thread.sleep(50);
+        System.out.println("\n0   [CANCEL]");
 
         System.out.print("\nEnter new position #: ");
         Scanner s = new Scanner(System.in);
@@ -71,8 +72,12 @@ public class Order{
             if(input2 == (newList.size() + 1)){
                 newList.add(playlist);
             }
+
+            
             System.out.println("Menu updated.\n");
+            Thread.sleep(1000);
             for(int i = 0; i < newList.size(); i++){
+                Thread.sleep(50);
                 System.out.print(newList.get(i).getTitle());
                 if(i == input2 - 1){
                     System.out.println(" <<");
@@ -95,14 +100,14 @@ public class Order{
         System.out.println("[move playlist]\n");
         System.out.println("#  -PLAYLIST-");
         for(int i = 0; i < ml.size(); i++){
-            Thread.sleep(20);
+            Thread.sleep(50);
             System.out.println((i + 1) + "  " + ml.get(i).getTitle());
         }
 
-        Thread.sleep(20);
+        Thread.sleep(50);
         System.out.println("\n0  [CANCEL]");
         
-        Thread.sleep(20);
+        Thread.sleep(50);
         System.out.print("\nEnter # (move): ");
 
         Scanner s = new Scanner(System.in);

@@ -16,7 +16,6 @@ public class Main {
 
         try {
             Scanner sc = new Scanner(data);
-            
 
             int counter = 1;
 
@@ -73,6 +72,7 @@ public class Main {
                         break;
                 }
             }
+            sc.close();
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -81,7 +81,7 @@ public class Main {
     }
 
     public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException{
-        System.out.println("\n[Main Menu]");
+        System.out.println("\n[LyricMachine]");
         Thread.sleep(50);
 
         for(int i = 0; i < 70; i++){
@@ -115,11 +115,14 @@ public class Main {
         }
         else{
             System.out.println();
+            linuxCommand("clear");
             String end = "Program terminated.";
             for(int i = 0; i < end.length(); i++){
                 System.out.print(end.charAt(i));
                 Thread.sleep(20);
             }
+            Thread.sleep(1000);
+            System.out.println();
             System.exit(0);
         }
     }
