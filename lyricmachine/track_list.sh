@@ -61,9 +61,12 @@ elif [ "$settings" == "-r" ];
 then
 	java Remove
 
+elif [ "$settings" == "-m" ];
+then
+	java Order
+
 elif [[ -z ${1+x} ]];
 then
-	echo ""
 	java Main
 else
 	echo "Command not found. See --help for more information."
