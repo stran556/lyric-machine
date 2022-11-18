@@ -10,12 +10,12 @@ then
 	echo "  -a  <spotify-URL>   |  add playlist"
 	echo "  -s  <search-input>  |  manual track search"
 	echo "  -r  <null>          |  remove playlist"
-
+	echo "  -m  <null>          |  change list order of menu"
 
 elif [ "$settings" == "-a" ];
 then
 	url=$2
-	if [[ $url == *"open.spotify.com/playlist"* ]]
+	if [[ "$url" == *"open.spotify.com/playlist"* ]];
 	then
 		./import_list.sh $url > /dev/null 2>&1
 

@@ -237,8 +237,6 @@ public class Main {
         
         ArrayList<Playlist> mainList = getPlaylists();
 
-        Scanner sc = new Scanner(System.in);
-
         linuxCommand("clear");
         printMainScreen(mainList);
     }
