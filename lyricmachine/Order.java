@@ -17,7 +17,7 @@ public class Order{
         for(int i = 0; i < ml.size(); i++){
             if(i == input - 1 || i == input){
                 if(i == input - 1){
-                    tempList.add(">    *" + ml.get(i).getTitle() + "*");
+                    tempList.add(">   *" + ml.get(i).getTitle() + "*");
                     counter = counter + 1;
                 }
                 else{
@@ -51,8 +51,27 @@ public class Order{
         if(input2 == input){
             System.out.println("\nNo changes made.");
         }
-        else if(input != 0){
-            //do shit
+        else if(input2 != 0){
+            Playlist playlist = ml.get(input - 1);
+            ml.remove(input - 1);
+
+            ArrayList<Playlist> newList = new ArrayList<Playlist>();
+
+            for(int i = 0; i < ml.size(); i++){
+                if(i == (input2 - 1)){
+                    newList.add(playlist);
+                    newList.add(ml.get(i));
+                }
+                else{
+                    newList.add(ml.get(i));
+                }
+            }
+            if(input2 == (newList.size() + 1)){
+                newList.add(playlist);
+            }
+            for(int i = 0; i < newList.size(); i++){
+                System.out.println(newList.get(i).getTitle());
+            }
 
         }
         else{
