@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -80,7 +81,7 @@ public class Main {
         return playlistList; 
     }
 
-    public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException{
+    public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException {
         System.out.println("\n[LyricMachine]");
         Thread.sleep(50);
 
@@ -103,24 +104,44 @@ public class Main {
         System.out.print("\nEnter #: ");
 
         Scanner s = new Scanner(System.in);
-        int input = s.nextInt();
+        int input = 0;
+        boolean valid = true;
+        do{
+            try{
+                s = new Scanner(System.in);
+                input = s.nextInt();
+                valid = true;
+
+            } catch(InputMismatchException e){
+                System.out.print("Invalid input: ");
+                valid = false;
+            }
+        } while(!valid);
 
         while(input < 0 || input > ml.size()){
-            System.out.print("Invalid option, try again: ");
-            input = s.nextInt();
+            System.out.print("No option: ");
+
+            do{
+                try{
+                    s = new Scanner(System.in);
+                    input = s.nextInt();
+                    valid = true;
+    
+                } catch(InputMismatchException e){
+                    System.out.print("Invalid input: ");
+                    valid = false;
+                }
+            } while(!valid);
         }
 
         if(input != 0){
             printPlaylistScreen(ml, input);
         }
         else{
+            
             System.out.println();
             linuxCommand("clear");
-            String end = "Program terminated.";
-            for(int i = 0; i < end.length(); i++){
-                System.out.print(end.charAt(i));
-                Thread.sleep(20);
-            }
+            typeText("Program terminated.");
             Thread.sleep(1000);
             System.out.println();
             System.exit(0);
@@ -152,14 +173,38 @@ public class Main {
 
         Thread.sleep(20);
         System.out.print("\nEnter #: ");
-
         Scanner s = new Scanner(System.in);
-        int input = s.nextInt();
-        
+        int input = 0;
+        boolean valid = true;
+        do{
+            try{
+                s = new Scanner(System.in);
+                input = s.nextInt();
+                valid = true;
+
+
+            } catch(InputMismatchException e){
+                System.out.print("Invalid input: ");
+                valid = false;
+            }
+        } while(!valid);
+
         while(input < 0 || input > track.size()){
-            System.out.print("Invalid option, try again: ");
-            input = s.nextInt();
+            System.out.print("No option: ");
+
+            do{
+                try{
+                    s = new Scanner(System.in);
+                    input = s.nextInt();
+                    valid = true;
+    
+                } catch(InputMismatchException e){
+                    System.out.print("Invalid input: ");
+                    valid = false;
+                }
+            } while(!valid);
         }
+        
 
         if(input != 0){
             linuxCommand("clear");
@@ -233,11 +278,20 @@ public class Main {
             } catch(IOException e){}
     }
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void typeText(String txt) throws InterruptedException{
+
+        for(int i = 0; i < txt.length(); i++){
+            System.out.print(txt.charAt(i));
+            Thread.sleep(20);
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
         
         ArrayList<Playlist> mainList = getPlaylists();
 
         linuxCommand("clear");
         printMainScreen(mainList);
+        
     }
 }

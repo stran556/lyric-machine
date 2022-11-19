@@ -33,6 +33,7 @@ else
 	cat lyrics.txt
 fi
 
+rm urls
 
 
 : > lyrics.txt

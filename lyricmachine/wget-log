@@ -1,0 +1,6 @@
+--2022-11-19 15:27:10--  https://open.spotify.com/playlist/6nDbBmD8iF1QtF2TD1Yvea?si=7d894aa4c82b4bac
+Resolving open.spotify.com (open.spotify.com)... 35.186.224.25, 2600:1901:1:c36::
+Connecting to open.spotify.com (open.spotify.com)|35.186.224.25|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2022-11-19 15:27:10 ERROR 404: Not Found.
+

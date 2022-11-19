@@ -7,16 +7,21 @@ public class Remove {
 
     public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException{
         Main.linuxCommand("clear");
-        System.out.println("[remove playlist]\n");
-        Thread.sleep(50);
-        System.out.println("#  -PLAYLIST-");
+        System.out.println("[remove playlist]");
+
+        for(int i = 0; i < 70; i++){
+            System.out.print("_");
+            Thread.sleep(10);
+        }
+
+        System.out.println("\n\n#  -PLAYLIST-\n");
         for(int i = 0; i < ml.size(); i++){
             Thread.sleep(50);
             System.out.println((i + 1) + "  " + ml.get(i).getTitle());
         }
 
         Thread.sleep(50);
-        System.out.println("\n0  [EXIT]");
+        System.out.println("\n0  [CANCEL]");
         
         Thread.sleep(50);
         System.out.print("\nEnter # (delete): ");
@@ -29,15 +34,24 @@ public class Remove {
             input = s.nextInt();
         }
 
+        System.out.println();
         if(input != 0){
+            Main.typeText("Deleting playlist...");
             ml.remove(input - 1);
             Main.updateList(ml);
 
-            Main.linuxCommand("clear");
-            System.out.println("Playlist deleted.");
             Thread.sleep(1000);
+            Main.linuxCommand("clear");
+            Main.typeText("Playlist removed.");
+            Thread.sleep(1000);
+            System.out.println();
         }
         else{
+            System.out.println();
+            Main.linuxCommand("clear");
+            Main.typeText("Operation cancelled.");
+            Thread.sleep(1000);
+            System.out.println();
             System.exit(0);
         }
 

@@ -91,14 +91,25 @@ public class Order{
 
         }
         else{
+            System.out.println();
+            Main.linuxCommand("clear");
+            Main.typeText("Operation cancelled.");
+            Thread.sleep(1000);
+            System.out.println();
             System.exit(0);
         }
 
     }
 
     public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException{
-        System.out.println("[move playlist]\n");
-        System.out.println("#  -PLAYLIST-");
+        System.out.println("[move playlist]");
+
+        for(int i = 0; i < 70; i++){
+            System.out.print("_");
+            Thread.sleep(10);
+        }
+
+        System.out.println("\n\n#  -PLAYLIST-");
         for(int i = 0; i < ml.size(); i++){
             Thread.sleep(50);
             System.out.println((i + 1) + "  " + ml.get(i).getTitle());
@@ -123,6 +134,11 @@ public class Order{
 
         }
         else{
+            System.out.println();
+            Main.linuxCommand("clear");
+            Main.typeText("Operation cancelled.");
+            Thread.sleep(1000);
+            System.out.println();
             System.exit(0);
         }
 
