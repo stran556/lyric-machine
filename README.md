@@ -4,6 +4,8 @@ Often, we get the urge to express our inner vocalist, especially in the midsts o
 
 LyricMachine presents the lyrics to almost any song in a very convenient interface: your currently-open Linux terminal window. A simple search script can offer the lyrics to any single song quickly, but what about for multiple songs? Upload your (or any) public spotify playlists and pick lyrics from your personal Linux-terminal track repertoire. 
 
+This project, which was once implemented in Python, has been updated with a much more efficient Java implementation. It is intended to be ran in a Linux environment and uses multiple shell scripts in combination with other high-level languages.
+
 ## lm
 View your uploaded playlists. Pick song lyrics from any of the tracks in the playlists displayed.
 
