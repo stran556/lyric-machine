@@ -90,11 +90,16 @@ public class Main {
             Thread.sleep(10);
         }
         System.out.println("\n");
-        System.out.println("#  -PLAYLIST-");
+        System.out.println("#   -PLAYLIST-");
         Thread.sleep(50);
+
+
         for(int i = 0; i < ml.size(); i++){
+            String space = " ";
             Thread.sleep(50);
-            System.out.println((i + 1) + "  " + ml.get(i).getTitle());
+            if(i < 9)
+                space = space + " ";
+            System.out.println((i + 1) + " " + space + ml.get(i).getTitle());
         }
 
         Thread.sleep(50);
@@ -119,7 +124,7 @@ public class Main {
         } while(!valid);
 
         while(input < 0 || input > ml.size()){
-            System.out.print("No option: ");
+            System.out.print("Option not found: ");
 
             do{
                 try{
@@ -153,16 +158,19 @@ public class Main {
         System.out.println("\n\"" + ml.get(num - 1).getTitle() + "\"");
         ArrayList<String> track = ml.get(num - 1).getTrackList();
         ArrayList<String> artist = ml.get(num - 1).getArtistList();
+
         for(int i = 0; i < 70; i++){
             System.out.print("_");
             Thread.sleep(10);
         }
+
         System.out.println("\n");
         System.out.print(ml.get(num - 1).getOwner() + " · ");
         System.out.print(track.size() + " songs" + " · ");
         System.out.print(ml.get(num - 1).getDuration() + "\n");
 
         System.out.println("#   -TITLE-                                           -ARTIST-");
+
         for(int i = 0; i < track.size(); i++){
             Thread.sleep(20);
             System.out.printf("%-4d%-50s%-30s\n", (i + 1), track.get(i), artist.get(i));
@@ -173,37 +181,7 @@ public class Main {
 
         Thread.sleep(20);
         System.out.print("\nEnter #: ");
-        Scanner s = new Scanner(System.in);
-        int input = 0;
-        boolean valid = true;
-        do{
-            try{
-                s = new Scanner(System.in);
-                input = s.nextInt();
-                valid = true;
-
-
-            } catch(InputMismatchException e){
-                System.out.print("Invalid input: ");
-                valid = false;
-            }
-        } while(!valid);
-
-        while(input < 0 || input > track.size()){
-            System.out.print("No option: ");
-
-            do{
-                try{
-                    s = new Scanner(System.in);
-                    input = s.nextInt();
-                    valid = true;
-    
-                } catch(InputMismatchException e){
-                    System.out.print("Invalid input: ");
-                    valid = false;
-                }
-            } while(!valid);
-        }
+        int input = validateInput(track.size());
         
 
         if(input != 0){
@@ -264,6 +242,7 @@ public class Main {
           }
           
     }
+
     public static void linuxCommand(String cmd){
         ProcessBuilder pb = new ProcessBuilder();
             pb.command(cmd);
@@ -286,8 +265,41 @@ public class Main {
         }
     }
 
+    public static int validateInput(int bound){
+        Scanner s = new Scanner(System.in);
+        int input = 0;
+        boolean valid = true;
+        do{
+            try{
+                s = new Scanner(System.in);
+                input = s.nextInt();
+                valid = true;
+
+
+            } catch(InputMismatchException e){
+                System.out.print("Invalid input: ");
+                valid = false;
+            }
+        } while(!valid);
+
+        while(input < 0 || input > bound){
+            System.out.print("Option not found: ");
+
+            do{
+                try{
+                    s = new Scanner(System.in);
+                    input = s.nextInt();
+                    valid = true;
+    
+                } catch(InputMismatchException e){
+                    System.out.print("Invalid input: ");
+                    valid = false;
+                }
+            } while(!valid);
+        }
+        return input;
+    }
     public static void main(String[] args) throws InterruptedException {
-        
         ArrayList<Playlist> mainList = getPlaylists();
 
         linuxCommand("clear");
