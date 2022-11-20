@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 
 public class Main {
-
+    //Read data.txt file into playlist objects arraylist
     public static ArrayList<Playlist> getPlaylists() {
         File data = new File("data.txt");
 
@@ -81,6 +81,7 @@ public class Main {
         return playlistList; 
     }
 
+    //Print the main screen of playlists
     public static void printMainScreen(ArrayList<Playlist> ml) throws InterruptedException {
         System.out.println("\n[LyricMachine]");
         Thread.sleep(50);
@@ -107,37 +108,7 @@ public class Main {
 
         Thread.sleep(50);
         System.out.print("\nEnter #: ");
-
-        Scanner s = new Scanner(System.in);
-        int input = 0;
-        boolean valid = true;
-        do{
-            try{
-                s = new Scanner(System.in);
-                input = s.nextInt();
-                valid = true;
-
-            } catch(InputMismatchException e){
-                System.out.print("Invalid input: ");
-                valid = false;
-            }
-        } while(!valid);
-
-        while(input < 0 || input > ml.size()){
-            System.out.print("Option not found: ");
-
-            do{
-                try{
-                    s = new Scanner(System.in);
-                    input = s.nextInt();
-                    valid = true;
-    
-                } catch(InputMismatchException e){
-                    System.out.print("Invalid input: ");
-                    valid = false;
-                }
-            } while(!valid);
-        }
+        int input = validateInput(ml.size());
 
         if(input != 0){
             printPlaylistScreen(ml, input);
@@ -153,6 +124,7 @@ public class Main {
         }
     }
 
+    //Print tracks of chosen playlist
     public static void printPlaylistScreen(ArrayList<Playlist> ml, int num) throws InterruptedException{
         Main.linuxCommand("clear");
         System.out.println("\n\"" + ml.get(num - 1).getTitle() + "\"");
@@ -214,6 +186,7 @@ public class Main {
 
     }
 
+    //Rewrite changes to data.txt
     public static void updateList(ArrayList<Playlist> ml) throws InterruptedException{
         
         File data = new File("data.txt");
@@ -243,6 +216,7 @@ public class Main {
           
     }
 
+    //Execute a linux command
     public static void linuxCommand(String cmd){
         ProcessBuilder pb = new ProcessBuilder();
             pb.command(cmd);
@@ -257,6 +231,7 @@ public class Main {
             } catch(IOException e){}
     }
 
+    //Print text with typing animation
     public static void typeText(String txt) throws InterruptedException{
 
         for(int i = 0; i < txt.length(); i++){
@@ -265,6 +240,7 @@ public class Main {
         }
     }
 
+    //Input validation
     public static int validateInput(int bound){
         Scanner s = new Scanner(System.in);
         int input = 0;
