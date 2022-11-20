@@ -34,6 +34,8 @@ Uploading playlists will only upload the first 100 tracks. This is because 'wget
 
 python3- Run .py files (main.py, print.py)
 
+java- Run & compile .java files (Main.java, Remove.java, Order.java)
+
 lynx- Retrieve a webpage by search (search.sh)
 
 wget- Retrieve HTML content for URL (import_list.sh)
